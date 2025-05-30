@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS Products (
     Quantity INT NOT NULL
 );
 
+---
+
 🚀 Features & Modules
 ProductAdd: Add new products
 
