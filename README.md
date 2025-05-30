@@ -1,179 +1,152 @@
-
 # Product Management System
 
-A dynamic web application designed to manage products effectively in an organization. Built using **JSP, Servlets, and MySQL**, it follows the **MVC architecture** to ensure clean code structure and smooth functionality.
+A **dynamic web application** designed to manage product inventory efficiently in an organization. Built using **JSP, Servlets, and MySQL**, it follows the **MVC architecture** to ensure clean code structure and smooth functionality.
 
 ---
 
-## 🚀 Features
+## 🚀 Project Purpose
 
-- **Manage Products**: Start by adding new products to the system  
-- **Update Product Details**: Edit the details of existing products easily  
-- **Delete Product Records**: Remove a product from the system using its unique ID  
-- **Display All Products**: View all products in a table format  
-- **Generate Reports** based on different criteria:
-  - Show products above a given price  
-  - List products by category  
-  - View top N products by sales or inventory  
-- **Input Checks**: Both client-side (JavaScript) and server-side (Servlet) validations  
-- **Responsive Design**: Looks great on all devices using Bootstrap  
-- **Database Integration**: Uses MySQL with JDBC for backend connectivity  
-
----
-
-## 📋 Prerequisites
-
-Make sure the following are installed:
-
-- Java Development Kit (JDK) 8+  
-- Apache Tomcat 9.0+  
-- XAMPP  
-- MySQL JDBC Driver  
-- Java IDE (Eclipse or IntelliJ)  
-- Web Browser (Chrome, Firefox, Edge)  
+The system manages product inventory, including:
+- Adding new products
+- Updating product details
+- Deleting obsolete products
+- Viewing product lists
+- Generating reports such as:
+  - Products with price above a certain amount
+  - Products in a specific category
+  - Top-selling products or products with highest quantity
 
 ---
 
 ## 🛠️ Project Structure
 
-```
 ProductWebApp/
-├── src/
-│   ├── dao/
-│   │   └── ProductDAO.java
-│   ├── model/
-│   │   └── Product.java
-│   └── servlet/
-│       ├── AddProductServlet.java
-│       ├── UpdateProductServlet.java
-│       ├── DeleteProductServlet.java
-│       ├── DisplayProductsServlet.java
-│       ├── ReportServlet.java
-│       └── ReportCriteriaServlet.java
 ├── WebContent/
-│   ├── index.jsp
-│   ├── productadd.jsp
-│   ├── productupdate.jsp
-│   ├── productdelete.jsp
-│   ├── productdisplay.jsp
-│   ├── reports.jsp
-│   ├── report_form.jsp
-│   ├── report_result.jsp
-│   └── css/
-│       └── styles.css
-├── WEB-INF/
-│   └── web.xml
-└── README.md
-```
+│ ├── index.jsp
+│ ├── productadd.jsp
+│ ├── productupdate.jsp
+│ ├── productdelete.jsp
+│ ├── productdisplay.jsp
+│ ├── reports.jsp
+│ ├── report_form.jsp
+│ └── report_result.jsp
+├── src/
+│ ├── com/
+│ ├── dao/
+│ │ └── ProductDAO.java
+│ ├── model/
+│ │ └── Product.java
+│ └── servlet/
+│ ├── AddProductServlet.java
+│ ├── UpdateProductServlet.java
+│ ├── DeleteProductServlet.java
+│ ├── DisplayProductsServlet.java
+│ ├── ReportServlet.java
+│ └── ReportCriteriaServlet.java
+└── WEB-INF/web.xml
+
 
 ---
 
-## Database Setup
-
-### 1. Create Product Database
+## 📋 Database Structure
 
 ```sql
 CREATE DATABASE IF NOT EXISTS product_management;
 USE product_management;
-```
 
-### 2. Create Products Table
-
-```sql
 CREATE TABLE IF NOT EXISTS Products (
     ProductID INT PRIMARY KEY AUTO_INCREMENT,
     ProductName VARCHAR(100) NOT NULL,
     Category VARCHAR(50) NOT NULL,
     Price DECIMAL(10,2) NOT NULL,
-    Quantity INT NOT NULL,
-    DateAdded DATE NOT NULL
+    Quantity INT NOT NULL
 );
-```
 
----
+🚀 Features & Modules
+ProductAdd: Add new products
 
-## ⚙️ Installation & Setup
+ProductUpdate: Update product details
 
-### Step 1: Download the Project  
-Organize project files according to the structure above.
+ProductDelete: Remove products
 
-### Step 2: Configure Database
+ProductDisplay: List all products
 
-1. Start MySQL server  
-2. Run the SQL setup scripts  
-3. Update DB credentials in `ProductDAO.java`:
+Reports:
 
-```java
+Products with price greater than a specified value
+
+Products in a specific category
+
+Top N products by sales or quantity
+
+🖥️ Prerequisites
+Java Development Kit (JDK) 8+
+
+Apache Tomcat 9.0+
+
+XAMPP
+
+MySQL JDBC Driver
+
+Java IDE (Eclipse or IntelliJ)
+
+Web Browser (Chrome, Firefox, Edge)
+
+⚙️ Setup Instructions
+1️⃣ Download the Project
+Organize the project files as per the Project Structure.
+
+2️⃣ Configure MySQL Database
+Start your MySQL server.
+
+Run the Database Structure SQL in your MySQL client or terminal.
+
+Update DB credentials in ProductDAO.java:
 connection = DriverManager.getConnection(
     "jdbc:mysql://localhost:3306/product_management",
     "your_username",
     "your_password");
-```
+3️⃣ Add JDBC Driver
+Download MySQL Connector/J (JDBC Driver).
 
-### Step 3: Add JDBC Driver
+Place the JAR file in WEB-INF/lib.
 
-1. Download MySQL Connector/J  
-2. Place the JAR file in `WEB-INF/lib`  
-3. Add it to build path in IDE  
+Add the JAR to your project’s build path.
 
-### Step 4: Deploy to Tomcat
+4️⃣ Deploy to Apache Tomcat
+Create a Dynamic Web Project in your IDE.
 
-1. Create a Dynamic Web Project in your IDE  
-2. Copy files to corresponding folders  
-3. Deploy to Tomcat and start server  
+Copy files to the correct folders.
 
-### Step 5: Run the App
+Deploy the project to Tomcat and start the server.
 
-```
+5️⃣ Run the Application
+Open your browser and go to:
 http://localhost:8080/ProductWebApp/
-```
+📄 Technical Features
+🔒 Input Validation
+Client-side: JavaScript & Bootstrap validation
 
----
+Server-side: Java Servlets validation
 
-## 🖼️ Screenshots
+Database-level: Constraints (NOT NULL, PRIMARY KEY, AUTO_INCREMENT)
 
-### Home Page  
-![Home](Sample_Screenshots/Home.png)
+🔥 Error Handling
+try-catch for database operations
 
-### Add Product Page  
-![Add](Sample_Screenshots/Add2.png)
+Input validation for incorrect or missing fields
 
-### Update Product  
-![Update](Sample_Screenshots/Update2.png)
+🖼️ Sample Screenshots (Optional)
+Home Page
 
-### Delete Product  
-![Delete](Sample_Screenshots/Delete2.png)
+Add Product
 
-### Display Products  
-![Display](Sample_Screenshots/Display2.png)
+Update Product
 
-### Generate Report  
-#### Products above a price threshold  
-![Report](Sample_Screenshots/Report1.png)
+Delete Product
 
----
+Display Products
 
-## 🔧 Technical Features
+Reports (Products by Price, Category, Top N)
 
-### Validation
 
-- **Client-side**: JavaScript, Bootstrap  
-- **Server-side**: Java servlets  
-- **DB-level**: Constraints like NOT NULL, PRIMARY KEY, AUTO_INCREMENT  
-
-### Error Handling
-
-- Try-catch for DB operations  
-- Invalid input management  
-
----
-
-## 📌 Notes
-
-- Replace `"your_username"` and `"your_password"` in the connection string with your MySQL credentials.
-- Add sample data to the database to test features.
-- Screenshots should be updated with product-related visuals.
-
----
-
-Happy coding! 🚀
